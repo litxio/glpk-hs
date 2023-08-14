@@ -5,7 +5,7 @@ import Control.Monad
 
 import Control.Monad.State.Strict
 import Control.Monad.Reader
-import Control.Monad.Error
+-- import Control.Monad.Error
 import qualified Control.Monad.Writer.Lazy as WL
 import qualified Control.Monad.Writer.Strict as WS
 import qualified Control.Monad.State.Lazy as SL
@@ -31,9 +31,9 @@ instance MonadSupply x m => MonadSupply x (ReaderT r m) where
 	supplyNew = lift supplyNew
 	supplyN = lift . supplyN
 
-instance (Error e, MonadSupply x m) => MonadSupply x (ErrorT e m) where
-	supplyNew = lift supplyNew
-	supplyN = lift . supplyN
+-- instance (Error e, MonadSupply x m) => MonadSupply x (ErrorT e m) where
+-- 	supplyNew = lift supplyNew
+-- 	supplyN = lift . supplyN
 
 instance (MonadSupply x m, Monoid w) => MonadSupply x (WL.WriterT w m) where
 	supplyNew = lift supplyNew
